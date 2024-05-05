@@ -1,0 +1,18 @@
+upper lids - open: 60, close 0
+bottom lids - open: 0, close 60
+
+
+eyeball
+pitch- center: 100, up: 120, down: 80
+yaw- center: 90, left: 70, right: 110
+
+ease in out
+
+
+2,3,4,5,6,7
+
+eauta function ma 6 inputs. 
+
+If out of range throw err
+
+
