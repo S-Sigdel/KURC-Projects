@@ -1,4 +1,8 @@
 #include<Servo.h>
+//function declaration
+
+void calibrate();
+
 Servo eyelidTopRight, eyelidTopLeft, yaw, pitch, eyelidBottomRight, eyelidBottomLeft;
 
 void setup() {

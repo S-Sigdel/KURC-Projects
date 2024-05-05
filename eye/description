@@ -8,10 +8,11 @@ yaw- center: 90, left: 70, right: 110
 
 ease in out
 
-
+servo pin joint
 2,3,4,5,6,7
 
 eauta function ma 6 inputs. 
+probably using serial monitor with angles
 
 If out of range throw err
 
