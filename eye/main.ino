@@ -1,11 +1,23 @@
 #include<Servo.h>
 //function declaration
+#define numberOfServo 6
+#define digitsPerValue 3 //angle can be max of 3 digits
 
 void calibrate();
+//global variable declaration to be used in the programs
 
 Servo eyelidTopRight, eyelidTopLeft, yaw, pitch, eyelidBottomRight, eyelidBottomLeft;
+//declaring variable as needed
+int inputArray[numberOfServo];
+int stringLength= numberOfServo * digitsPerValue + 1;
+//added one because string begins with $ to avoid garbage data output
+//$030030030030100090 [example of the eye open with eyeball in center]
 
 void setup() {
+  //serial port used for data transfer
+  Serial.begin(9600);
+
+  //pins attaching of servos
   eyelidTopRight.attach(2);
   eyelidTopLeft.attach(3);
   eyelidBottomRight.attach(4);
