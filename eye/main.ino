@@ -1,4 +1,5 @@
 #include<Servo.h>
+#include <ServoEasing.hpp> 
 //definition for the value from the user
 #define numberOfServo 6
 #define digitsPerValue 3 //angle can be max of 3 digits
@@ -12,6 +13,8 @@ void lookRight();
 void lookCenter();
 void lookUp();
 void lookDown();
+void lookCenterVertical();
+void lookCenterHorizontal();
 //global variable declaration to be used in the programs
 
 Servo eyelidTopRight, eyelidTopLeft, yaw, pitch, eyelidBottomRight, eyelidBottomLeft;
@@ -23,7 +26,7 @@ int stringLength= numberOfServo * digitsPerValue + 1;
 
 void setup() {
   //serial port used for data transfer
-  Serial.begin(9600);
+  //Serial.begin(9600); for input later on probably
 
   //pins attaching of servos
   eyelidTopRight.attach(2);
@@ -38,10 +41,19 @@ void setup() {
 }
 
 void loop(){
+ close();
+ open();
+ lookLeft();
+ lookRight();
+ lookCenterHorizontal();
+ lookUp();
+ lookDown();
+ lookCenterVertical();
 
 }
 
 void calibrate() {
+
   eyelidBottomLeft.write(60);
   eyelidBottomRight.write(60);
   eyelidTopLeft.write(0);
@@ -51,12 +63,25 @@ void calibrate() {
 }
 
 void close(){
+  //servoeasing method
+  eyelidTopLeft.setEasingType(EASE_LINEAR_IN_OUT);
+  eyelidTopRight.setEasingType(EASE_LINEAR_IN_OUT);
+  eyelidBottomRight.setEasingType(EASE_LINEAR_IN_OUT);
+  eyelidBottomLeft.setEasingType(EASE_LINEAR_IN_OUT);
+
   eyelidBottomRight.startEaseTo(0);
   eyelidBottomLeft.startEaseTo(0);
   eyelidTopLeft.startEaseTo(60);
   eyelidTopRight.startEaseTo(60);
 }
 void open(){
+  //servoeasing method
+  eyelidTopLeft.setEasingType(EASE_LINEAR_IN_OUT);
+  eyelidTopRight.setEasingType(EASE_LINEAR_IN_OUT);
+  eyelidBottomRight.setEasingType(EASE_LINEAR_IN_OUT);
+  eyelidBottomLeft.setEasingType(EASE_LINEAR_IN_OUT);
+
+
   eyelidBottomRight.startEaseTo(60);
   eyelidBottomLeft.startEaseTo(60);
   eyelidTopLeft.startEaseTo(0);
@@ -64,20 +89,26 @@ void open(){
 
 }
 void lookLeft(){
+  yaw.setEasingType(Ease_QUADRATIC_IN_OUT);
   yaw.startEaseTo(70);
 }
 void lookRight(){
+  yaw.setEasingType(Ease_QUADRATIC_IN_OUT);
   yaw.startEaseTo(110);
 }
-void lookCenter(){
+void lookCenterHorizontal(){
+  yaw.setEasingType(Ease_QUADRATIC_IN_OUT);
   yaw.startEaseTo(90);
 }
 void lookUp(){
+  pitch.setEasingType(Ease_QUADRATIC_IN_OUT);
   pitch.startEaseTo(120);
 }
 void lookDown(){
+  pitch.setEasingType(Ease_QUADRATIC_IN_OUT);
   pitch.startEaseTo(80);
 }
-void lookCenter(){
-    pitch.startEaseTo(100);
-  }
+void lookCenterVertical(){
+  pitch.setEasingType(Ease_QUADRATIC_IN_OUT);
+  pitch.startEaseTo(100);
+}
