@@ -1,5 +1,5 @@
 #include<Servo.h>
-#include <ServoEasing.hpp> 
+//#include <ServoEasing.hpp> 
 //definition for the value from the user
 //#define numberOfServo 6
 //#define digitsPerValue 3 //angle can be max of 3 digits
@@ -41,14 +41,14 @@ void setup() {
 }
 
 void loop(){
- close();
- open();
- lookLeft();
- lookRight();
- lookCenterHorizontal();
- lookUp();
- lookDown();
- lookCenterVertical();
+// close();
+// open();
+// lookLeft();
+// lookRight();
+// lookCenterHorizontal();
+// lookUp();
+// lookDown();
+// lookCenterVertical();
 
 }
 
